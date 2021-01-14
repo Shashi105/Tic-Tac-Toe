@@ -3,6 +3,7 @@ var arrPlayerO=[];
 var arrPlayerX=[];
 var result=false;
 function displayBoard(){
+    console.log(arrPlayerO,arrPlayerX,result)
     let initialCount=getRandomInt(2);
     let count=initialCount;
     initialCount+=9;
@@ -62,11 +63,12 @@ function displayBoard(){
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
       }
-    function checkTie(count){
-         if(count==9){
+    function checkTie(count,result){
+        if(count==10 && !result){
             setTimeout(()=>{alert("Cat's Game!!!")},5);
             location.reload();
         }
+           
     }
 
     function checkWinner(playerInfo,count){    
@@ -90,9 +92,7 @@ function displayBoard(){
               }
              },5);
           }
-          if(!result){
             console.log(count);
-            checkTie(count);
-          }
+            checkTie(count,result);          
       }
 };
